@@ -9,6 +9,7 @@ JavaScript 是一种基于原型（Prototype）的语言，而不是传统的基
 ### 实现原理
 
 ```javascript
+
 function Parent() {
   this.name = "parent";
 }
@@ -32,6 +33,7 @@ console.log(child1.name); // 输出: parent
 console.log(child1.age); // 输出: 18
 ```
 
+
 ### 优缺点分析
 
 **优点**：
@@ -50,6 +52,7 @@ console.log(child1.age); // 输出: 18
 ### 实现原理
 
 ```javascript
+
 function Parent(name) {
   console.log("Parent方法执行", this);
   this.name = name;
@@ -73,6 +76,7 @@ let child = new Child(18, "张三");
 console.log(child); // 输出: Child { name: '张三', age: 18 }
 ```
 
+
 ### 优缺点分析
 
 **优点**：
@@ -91,6 +95,7 @@ console.log(child); // 输出: Child { name: '张三', age: 18 }
 ### 实现原理
 
 ```javascript
+
 const parent = {
   name: "parent",
   age: 18,
@@ -107,6 +112,7 @@ console.log(child.name); // 输出: parent
 console.log(child.age); // 输出: 20
 child.say(); // 输出: hello world
 ```
+
 
 ### 优缺点分析
 
@@ -126,6 +132,7 @@ child.say(); // 输出: hello world
 ### 实现原理
 
 ```javascript
+
 function Parent(name) {
   this.name = name;
 }
@@ -151,6 +158,7 @@ console.log(child); // 输出: Child { name: '张三', age: 18 }
 console.log(child.constructor); // 输出: [Function: Child]
 ```
 
+
 ### 优缺点分析
 
 **优点**：
@@ -169,6 +177,7 @@ ES6 引入了 `class` 关键字和 `extends` 语法，使 JavaScript 的继承�
 ### 实现原理
 
 ```javascript
+
 class Parent {
   constructor(name) {
     this.name = name;
@@ -191,6 +200,7 @@ const child = new Child("张三", 18);
 child.say(); // 输出: hello world
 console.log(child); // 输出: Child { name: '张三', age: 18 }
 ```
+
 
 ### 注意事项
 
