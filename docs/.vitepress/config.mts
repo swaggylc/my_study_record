@@ -6,10 +6,10 @@ export default defineConfig({
   title: "前端学习记录",
   description: "这是一个vitepress的demo工程",
   // 引入icon图标
-  head: [["link", { rel: "icon", href: "/public/img/avt.JPG" }]],
+  head: [["link", { rel: "icon", href: "/img/avt.JPG" }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "/public/img/avt.JPG",
+    logo: "/img/avt.JPG",
     nav: [
       { text: "Home", link: "/" },
       { text: "Study", link: "/study" },
