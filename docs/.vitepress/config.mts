@@ -52,6 +52,14 @@ export default defineConfig({
             text: "js的继承机制",
             link: "/src/javascript/js的继承",
           },
+          {
+            text: "手写防抖函数",
+            link: "/src/javascript/手写防抖函数",
+          },
+          {
+            text: "手写节流函数",
+            link: "/src/javascript/手写节流函数",
+          },
         ],
       },
       {
