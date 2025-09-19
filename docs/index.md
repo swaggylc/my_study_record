@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Go study
-      link: /study
+      link: /src/css/为什么要初始化CSS样式
     - theme: alt
       text: My Github
       link: "https://github.com/swaggylc"
