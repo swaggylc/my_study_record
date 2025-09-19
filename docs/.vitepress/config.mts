@@ -1,5 +1,8 @@
 import { defineConfig } from "vitepress";
 
+// 从模块化的侧边栏配置文件中导入
+import { sidebarConfig } from "./sidebar/index";
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/my_study_record/", // 仓库名
@@ -14,94 +17,8 @@ export default defineConfig({
       { text: "Home", link: "/" },
       { text: "Study", link: "/study" },
     ],
-    // 侧边栏
-    sidebar: [
-      {
-        text: "HTML",
-        collapsed: false,
-        items: [
-          {
-            text: "DOCUTYPE的作用",
-            link: "/src/html/DOCUTYPE的作用",
-          },
-          {
-            text: "html语义化标签",
-            link: "/src/html/html语义化",
-          },
-        ],
-      },
-      {
-        text: "CSS",
-        collapsed: false,
-        items: [
-          {
-            text: "为什么要初始化CSS样式",
-            link: "/src/css/为什么要初始化CSS样式",
-          },
-        ],
-      },
-      {
-        text: "JavaScript",
-        collapsed: false,
-        items: [
-          {
-            text: "数据类型和运算符",
-            link: "/src/javascript/数据类型和运算符",
-          },
-          {
-            text: "js的继承机制",
-            link: "/src/javascript/js的继承",
-          },
-          {
-            text: "手写防抖函数",
-            link: "/src/javascript/手写防抖函数",
-          },
-          {
-            text: "手写节流函数",
-            link: "/src/javascript/手写节流函数",
-          },
-        ],
-      },
-      {
-        text: "浏览器和网络",
-        collapsed: false,
-        items: [
-          {
-            text: "浏览器概述",
-            link: "/src/浏览器和网络/浏览器概述",
-          },
-        ],
-      },
-      {
-        text: "VUE",
-        collapsed: false,
-        items: [
-          {
-            text: "VUE2响应式原理",
-            link: "/src/vue/vue2响应式原理",
-          },
-          {
-            text: "VUE3响应式原理",
-            link: "/src/vue/vue3响应式原理",
-          },
-          {
-            text: "VUE3相关",
-            link: "/src/vue/vue3相关",
-          },
-        ],
-      },
-      {
-        text: "TypeScript",
-        collapsed: false,
-        link: "/src/typescript/TS学习",
-        // items: [
-        //   {
-        //     text: "TypeScript",
-        //     link: "/src/typescript/TS学习",
-        //   },
-        // ],
-      },
-    ],
+    // 侧边栏 - 使用模块化配置
+    sidebar: sidebarConfig,
 
     socialLinks: [{ icon: "github", link: "https://github.com/swaggylc" }],
 
