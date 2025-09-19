@@ -32,17 +32,10 @@ export default defineConfig({
     logo: "/img/avt.JPG",
     nav: [
       { text: "Home", link: "/" },
-      { text: "Study", link: "/study" },
+      { text: "Study", link: "/start/study" },
     ],
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/swaggylc" },
-      { icon: "wechat", link: "..." },
-      { icon: "qq", link: "..." },
-      { icon: "tiktok", link: "..." },
-      { icon: "fanfou", link: "..." },
-      { icon: "x", link: "..." },
-    ],
+    socialLinks: [{ icon: "github", link: "https://github.com/swaggylc" }],
 
     lastUpdated: {
       text: "上次更新于",
