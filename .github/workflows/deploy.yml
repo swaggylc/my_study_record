@@ -43,8 +43,9 @@ jobs:
 
       # 如果您使用的是 pnpm 包管理器，请取消下面几行的注释
       - uses: pnpm/action-setup@v3
-      #   with:
-      #     version: 9 # 如果您在 package.json 中设置了 "packageManager"，则不需要此设置
+        # 👇 指定 pnpm 版本
+        with:
+          version: 10.17.0 # 如果您在 package.json 中设置了 "packageManager"，则不需要此设置
 
       # 如果您使用的是 Bun 运行时，请取消下面一行的注释
       # - uses: oven-sh/setup-bun@v1
