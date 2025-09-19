@@ -23,5 +23,9 @@ export const javascriptSidebar = {
       text: "js原型链",
       link: "/src/javascript/js原型链",
     },
+    {
+      text: "new过程中发生了什么",
+      link: "/src/javascript/new过程中发生了什么",
+    },
   ],
 };
