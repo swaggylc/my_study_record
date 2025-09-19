@@ -6,7 +6,7 @@ import { sidebarConfig } from "./sidebar/index";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/my_study_record/", // 仓库名
-  title: "前端学习记录",
+  title: "WEB_RECORD",
   description: "这是一个vitepress的demo工程",
   // 引入icon图标
   head: [["link", { rel: "icon", href: "/img/avt.JPG" }]],
@@ -20,10 +20,17 @@ export default defineConfig({
     // 侧边栏 - 使用模块化配置
     sidebar: sidebarConfig,
 
-    socialLinks: [{ icon: "github", link: "https://github.com/swaggylc" }],
+    socialLinks: [
+      { icon: "github", link: "https://github.com/swaggylc" },
+      { icon: "wechat", link: "..." },
+      { icon: "qq", link: "..." },
+      { icon: "tiktok", link: "..." },
+      { icon: "fanfou", link: "..." },
+      { icon: "x", link: "..." },
+    ],
 
     lastUpdated: {
-      text: "Updated at",
+      text: "上次更新于",
       formatOptions: {
         dateStyle: "full",
         timeStyle: "medium",
@@ -32,7 +39,7 @@ export default defineConfig({
 
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2019-present Evan You",
+      copyright: "Copyright © 2025-present Swaggylc_0417",
     },
   },
 });
