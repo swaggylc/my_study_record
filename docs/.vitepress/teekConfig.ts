@@ -34,5 +34,6 @@ export const teekConfig = defineTeekConfig({
     sidebarOption: {
       initItems: false,
     },
+    permalink: true, // 使用该插件
   },
 });
