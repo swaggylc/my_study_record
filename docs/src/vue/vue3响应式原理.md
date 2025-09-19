@@ -2,11 +2,11 @@
 
 Vue 3 的响应式原理相比 Vue 2 是一次根本性的重构，它使用 **Proxy** 代替了 **Object.defineProperty**，解决了 Vue 2 中的诸多限制（如无法监听数组索引、对象属性增删等），并带来了更好的性能和更优雅的 API。
 
-## 核心：Proxy + Reflect
+# 核心：Proxy + Reflect
 
 Vue 3 的响应式系统基于 Proxy 对象实现，它能够拦截对整个对象的操作，而不仅仅是某个属性。
 
-### 1. Proxy 是什么？
+## 1. Proxy 是什么？
 
 Proxy 可以为一个对象创建一个"代理"，在这个代理上可以定义各种拦截操作（如读取、赋值、删除、枚举等）。
 
@@ -51,7 +51,7 @@ proxyObj.borther.name;
 proxyObj.borther.age = 2;
 ```
 
-### 2. 响应式核心流程
+## 2. 响应式核心流程
 
 Vue 3 的响应式系统主要由以下几个部分组成：
 
@@ -148,7 +148,7 @@ count.value++; // 必须通过 .value 访问
 
 ref 内部其实也是一个 Proxy（或带 value 属性的对象），在模板或 reactive 中使用时会自动解包。
 
-### 3. 解决了 Vue 2 的哪些问题？
+## 3. 解决了 Vue 2 的哪些问题？
 
 | 问题 | Vue 2 | Vue 3 |
 |------|-------|-------|
@@ -158,7 +158,7 @@ ref 内部其实也是一个 Proxy（或带 value 属性的对象），在模板
 | 监听 Map、Set、WeakMap 等 | ❌ 不支持 | ✅ 支持 |
 | 性能 | 需遍历所有属性 defineProperty | ✅ 懒代理，按需劫持 |
 
-### 4. 响应式系统结构图（简化）
+## 4. 响应式系统结构图（简化）
 
 ```
           [effect] (渲染函数 / watchEffect)
@@ -174,7 +174,7 @@ ref 内部其实也是一个 Proxy（或带 value 属性的对象），在模板
           [effect] 重新执行
 ```
 
-### 5. Vue 3 响应式 API
+## 5. Vue 3 响应式 API
 
 | API | 用途 |
 |------|------|
@@ -195,7 +195,7 @@ const countRef = toRef(state, 'count');
 const { name } = toRefs(state); // 解构后仍保持响应式
 ```
 
-### 6. 总结
+## 6. 总结
 
 | 特性 | Vue 2 | Vue 3 |
 |------|-------|-------|
