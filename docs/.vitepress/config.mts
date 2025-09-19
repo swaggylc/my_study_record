@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/", // 仓库名
+  base: "/my_study_record/", // 仓库名
   title: "前端学习记录",
   description: "这是一个vitepress的demo工程",
   // 引入icon图标
