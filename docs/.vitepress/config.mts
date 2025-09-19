@@ -48,6 +48,10 @@ export default defineConfig({
             text: "数据类型和运算符",
             link: "/src/javascript/数据类型和运算符",
           },
+          {
+            text: "js的继承机制",
+            link: "/src/javascript/js的继承",
+          },
         ],
       },
       {
@@ -64,6 +68,14 @@ export default defineConfig({
         text: "VUE",
         collapsed: false,
         items: [
+          {
+            text: "VUE2响应式原理",
+            link: "/src/vue/vue2响应式原理",
+          },
+          {
+            text: "VUE3响应式原理",
+            link: "/src/vue/vue3响应式原理",
+          },
           {
             text: "VUE3相关",
             link: "/src/vue/vue3相关",
