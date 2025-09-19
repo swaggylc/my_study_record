@@ -19,5 +19,9 @@ export const javascriptSidebar = {
       text: "手写节流函数",
       link: "/src/javascript/手写节流函数",
     },
+    {
+      text: "js原型链",
+      link: "/src/javascript/js原型链",
+    },
   ],
 };
