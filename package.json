@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "busuanzi.pure.js": "^1.0.3",
+    "echarts": "^6.0.0",
     "sass": "^1.92.1",
     "typescript": "^5.9.2",
     "vitepress": "^2.0.0-alpha.12",

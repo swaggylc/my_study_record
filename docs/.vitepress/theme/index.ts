@@ -26,6 +26,9 @@ import DataPanel from "./components/DataPanel.vue";
 import busuanzi from "busuanzi.pure.js";
 import { inBrowser } from "vitepress";
 
+import ContributeChart from "./components/ContributeChart.vue";
+import { h } from "vue";
+
 import "vitepress-theme-teek/theme-chalk/tk-article-update.css";
 
 export default {
@@ -39,4 +42,8 @@ export default {
     // 注册全局组件
     app.component("DataPanel", DataPanel);
   },
+  Layout: () =>
+    h(Teek.Layout, null, {
+      "teek-archives-top-before": () => h(ContributeChart),
+    }),
 };
