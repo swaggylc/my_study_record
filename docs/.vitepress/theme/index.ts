@@ -26,6 +26,17 @@ import DataPanel from "./components/DataPanel.vue";
 import busuanzi from "busuanzi.pure.js";
 import { inBrowser } from "vitepress";
 
+import { h, provide } from "vue";
+import { TkArticleUpdate, teekConfigContext } from "vitepress-theme-teek";
+import "vitepress-theme-teek/theme-chalk/tk-article-update.css";
+import DefaultTheme from "vitepress/theme";
+
+provide(teekConfigContext, {
+  articleUpdate: {
+    limit: 3, // 默认为 3，表示最多显示 3 条最近更新文章
+  },
+});
+
 export default {
   extends: Teek,
   enhanceApp({ app, router }) {
@@ -37,4 +48,8 @@ export default {
     // 注册全局组件
     app.component("DataPanel", DataPanel);
   },
+  Layout: () =>
+    h(DefaultTheme.Layout, null, {
+      "doc-after": () => h(TkArticleUpdate),
+    }),
 };
