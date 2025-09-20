@@ -1,5 +1,10 @@
 ---
-date: "2025-09-20T12:41:23+08:00"
+title: TS学习
+date: 2025-09-20 12:41:23
+permalink: /pages/55dadb
+categories:
+  - src
+  - typescript
 ---
 # TypeScript 学习
 

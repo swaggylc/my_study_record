@@ -1,5 +1,10 @@
 ---
-date: "2025-09-20T12:41:23+08:00"
+title: new过程中发生了什么
+date: 2025-09-20 12:41:23
+permalink: /pages/1a3137
+categories:
+  - src
+  - javascript
 ---
 # new 关键字的底层原理详解
 

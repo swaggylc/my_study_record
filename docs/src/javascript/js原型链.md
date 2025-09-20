@@ -1,5 +1,10 @@
 ---
-date: "2025-09-20T12:41:23+08:00"
+title: js原型链
+date: 2025-09-20 12:41:23
+permalink: /pages/7ffce1
+categories:
+  - src
+  - javascript
 ---
 # JavaScript 原型链详解
 

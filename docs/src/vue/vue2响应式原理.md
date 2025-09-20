@@ -1,5 +1,10 @@
 ---
-date: "2025-09-20T12:41:23+08:00"
+title: vue2响应式原理
+date: 2025-09-20 12:41:23
+permalink: /pages/f21920
+categories:
+  - src
+  - vue
 ---
 # Vue 2 响应式原理详解
 

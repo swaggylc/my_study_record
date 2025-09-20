@@ -1,5 +1,10 @@
 ---
-date: "2025-09-20T12:41:23+08:00"
+title: DOCUTYPE的作用
+date: 2025-09-20 12:41:23
+permalink: /pages/9eb981
+categories:
+  - src
+  - html
 ---
 # DOCTYPE 的作用
 

@@ -1,5 +1,10 @@
 ---
-date: "2025-09-20T12:41:23+08:00"
+title: vue3相关
+date: 2025-09-20 12:41:23
+permalink: /pages/b406e9
+categories:
+  - src
+  - vue
 ---
 # Vue 3 相关知识
 

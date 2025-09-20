@@ -1,5 +1,10 @@
 ---
-date: "2025-09-20T12:41:23+08:00"
+title: 手写call方法
+date: 2025-09-20 12:41:23
+permalink: /pages/0de6eb
+categories:
+  - src
+  - javascript
 ---
 # JavaScript 手写 call 方法详解
 
