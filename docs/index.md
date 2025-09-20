@@ -6,7 +6,7 @@ hero:
   text: "       by  swaggylc_0417"
   tagline: 欢迎来到WEB_RECORD，这里记录了我学习前端的一些知识和经验----不断更新中
   image:
-    src: /img/avt.JPG
+    src: /img/圆角-avt.jpg
     # alt: VitePress
   actions:
     - theme: brand
