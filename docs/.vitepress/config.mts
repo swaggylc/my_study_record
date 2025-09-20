@@ -51,6 +51,10 @@ export default defineConfig({
         timeStyle: "medium",
       },
     },
+    //本地搜索
+    search: {
+      provider: "local",
+    },
   },
   vite: {
     plugins: [llmstxt() as any, groupIconVitePlugin()],
