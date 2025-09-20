@@ -1,14 +1,3 @@
-// import DefaultTheme from "vitepress/theme";
-// import "../../public/style/index.scss";
-// import type { Theme } from "vitepress";
-
-// const theme: Theme = {
-//   extends: DefaultTheme,
-//   enhanceApp({ app }) {},
-// };
-
-// export default theme;
-
 import Teek from "vitepress-theme-teek";
 
 // Teek 在线主题包引用（需安装 Teek 在线版本）
@@ -32,8 +21,20 @@ import "./styles/index.scss";
 import "./styles/code.scss";
 import "./styles/blur.scss";
 import "./styles/sidebarIcon.scss";
+import DataPanel from "./components/DataPanel.vue";
+
+import busuanzi from "busuanzi.pure.js";
+import { inBrowser } from "vitepress";
 
 export default {
   extends: Teek,
-  // Layout: TeekLayoutProvider,
+  enhanceApp({ app, router }) {
+    if (inBrowser) {
+      router.onAfterRouteChanged = () => {
+        busuanzi.fetch();
+      };
+    }
+    // 注册全局组件
+    app.component("DataPanel", DataPanel);
+  },
 };
