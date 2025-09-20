@@ -9,7 +9,7 @@ import {
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   extends: teekConfig,
-  base: "/my_study_record/", // 仓库名
+  base: "/", // 仓库名
   title: "WEB_RECORD",
   description: "这是一个vitepress的demo工程",
   // 引入icon图标
