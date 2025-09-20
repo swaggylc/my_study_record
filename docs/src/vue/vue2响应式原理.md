@@ -8,6 +8,7 @@ Vue 2 在初始化数据时，会遍历 `data` 对象中的每一个属性，使
 
 ```javascript
 
+
 const person = {
   name: "张三",
   age: 18,
@@ -56,6 +57,7 @@ function defineProperty(obj) {
 ```
 
 
+
 - **getter**：在读取属性时触发，用于 **收集依赖**。
 - **setter**：在修改属性时触发，用于 **通知更新**。
 
@@ -91,9 +93,11 @@ Vue 会为 data 对象创建一个 Observer 实例，负责将对象的所有属
 
 ```javascript
 
+
 vm.obj.newProp = 'hi' // 不会触发更新
 delete vm.obj.prop   // 不会触发更新
 ```
+
 
 
 **解决方案**：使用 `Vue.set(vm.obj, 'newProp', 'hi')` 或 `this.$set`。
@@ -102,9 +106,11 @@ delete vm.obj.prop   // 不会触发更新
 
 ```javascript
 
+
 vm.items[0] = 'new'     // 不会触发更新
 vm.items.length = 0     // 不会触发更新
 ```
+
 
 **PS：为什么数组直接修改索引不会触发更新？**
 

@@ -8,8 +8,10 @@
 
 ### 语法
 ```javascript
+
 functionName.call(thisArg, arg1, arg2, ...);
 ```
+
 
 ### 参数说明
 - **thisArg**：在函数执行时，`this` 所指向的对象。如果为 `null` 或 `undefined`，则在非严格模式下指向全局对象（浏览器中是 `window`）。
@@ -17,6 +19,7 @@ functionName.call(thisArg, arg1, arg2, ...);
 
 ### 简单示例
 ```javascript
+
 function sayHello() {
   console.log(`Hello, ${this.name}`);
 }
@@ -25,6 +28,7 @@ const person = { name: 'Alice' };
 
 sayHello.call(person); // 输出: Hello, Alice
 ```
+
 
 ## 二、call 方法的原理
 
@@ -37,6 +41,7 @@ sayHello.call(person); // 输出: Hello, Alice
 我们可以通过扩展 `Function.prototype` 来模拟实现一个简易的 `call` 方法，命名为 `myCall`：
 
 ```javascript
+
 Function.prototype.myCall = function (context, ...args) {
   // 1. 如果 context 为 null 或 undefined，this 指向全局对象
   //    在严格模式下，this 为 undefined，这里我们按非严格模式处理
@@ -56,6 +61,7 @@ Function.prototype.myCall = function (context, ...args) {
   return result;
 };
 ```
+
 
 ### 实现原理详解
 
@@ -81,6 +87,7 @@ Function.prototype.myCall = function (context, ...args) {
 下面我们通过一个示例来验证我们实现的 `myCall` 方法是否正常工作：
 
 ```javascript
+
 // 定义一个测试函数
 function greet(greeting, punctuation) {
   console.log(greeting + ', ' + this.name + punctuation);
@@ -99,11 +106,13 @@ const result2 = greet.myCall(person, 'Hi', '.');
 console.log(result2); // 输出: 返回值: Hi, Alice.
 ```
 
+
 ### 模拟 call 底层执行过程
 
 为了更直观地理解 `call` 的工作原理，我们可以手动模拟其底层执行过程：
 
 ```javascript
+
 // 原始调用：greet.call(person, 'Hello', '!')
 // 等价于以下步骤：
 
@@ -120,6 +129,7 @@ delete person.tempFn;
 console.log(result); // 输出: 返回值: Hello, Alice!
 ```
 
+
 ## 五、call 与 apply、bind 的区别
 
 JavaScript 中，用于改变函数 `this` 指向的方法有三个：`call`、`apply` 和 `bind`。它们的主要区别如下：
@@ -132,16 +142,20 @@ JavaScript 中，用于改变函数 `this` 指向的方法有三个：`call`、`
 
 ### apply 示例
 ```javascript
+
 // apply 的用法（参数以数组形式传入）
 greet.apply(person, ['Hello', '!']); // 输出: Hello, Alice!
 ```
 
+
 ### bind 示例
 ```javascript
+
 // bind 的用法（返回一个新函数）
 const boundGreet = greet.bind(person, 'Hello');
 boundGreet('!'); // 输出: Hello, Alice!
 ```
+
 
 ## 六、call 方法的应用场景
 
@@ -149,6 +163,7 @@ boundGreet('!'); // 输出: Hello, Alice!
 
 ### 1. 借用其他对象的方法
 ```javascript
+
 const arrayLike = { 0: 'a', 1: 'b', length: 2 };
 
 // 借用数组的 push 方法
@@ -156,8 +171,10 @@ Array.prototype.push.call(arrayLike, 'c');
 console.log(arrayLike); // { 0: 'a', 1: 'b', 2: 'c', length: 3 }
 ```
 
+
 ### 2. 实现继承
 ```javascript
+
 function Parent(name) {
   this.name = name;
 }
@@ -171,14 +188,17 @@ const child = new Child('Bob', 18);
 console.log(child); // { name: 'Bob', age: 18 }
 ```
 
+
 ### 3. 将类数组对象转换为数组
 ```javascript
+
 function toArray() {
   return Array.prototype.slice.call(arguments);
 }
 
 console.log(toArray(1, 2, 3)); // [1, 2, 3]
 ```
+
 
 ## 七、总结
 

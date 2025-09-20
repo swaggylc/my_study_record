@@ -13,6 +13,7 @@ JavaScript 的原型链（Prototype Chain）是其实现继承和属性查找机
 
 ```javascript
 
+
 function Person(name) {
   this.name = name;
 }
@@ -28,6 +29,7 @@ console.log(p1.__proto__ === Person.prototype); // true
 ```
 
 
+
 ### 2. 构造函数、实例、原型的关系
 
 可以用一句话概括：
@@ -35,6 +37,7 @@ console.log(p1.__proto__ === Person.prototype); // true
 **实例的 `__proto__` 指向构造函数的 `prototype`**。
 
 ```plaintext
+
 
 实例 (p1)
   ↓ __proto__
@@ -44,11 +47,14 @@ console.log(p1.__proto__ === Person.prototype); // true
 ```
 
 
+
 ```javascript
+
 
 p1.__proto__ === Person.prototype;        // true
 Person.prototype.constructor === Person;  // true
 ```
+
 
 
 ## 二、原型链：属性查找机制
@@ -65,6 +71,7 @@ Person.prototype.constructor === Person;  // true
 
 ```javascript
 
+
 function Person(name) {
   this.name = name;
 }
@@ -80,9 +87,11 @@ p1.sayHello(); // "Hello, Alice"
 ```
 
 
+
 执行过程：
 
 ```plaintext
+
 
 p1.sayHello()
   → p1 自身有没有 sayHello? 没有
@@ -91,11 +100,13 @@ p1.sayHello()
 ```
 
 
+
 ## 三、原型链的终点：Object.prototype
 
 几乎所有对象的最终原型链都会指向 `Object.prototype`，它是所有对象的"祖先"。
 
 ```javascript
+
 
 console.log(p1.__proto__ === Person.prototype);           // true
 console.log(Person.prototype.__proto__ === Object.prototype); // true
@@ -103,15 +114,18 @@ console.log(Object.prototype.__proto__); // null （原型链终点）
 ```
 
 
+
 所以完整的原型链是：
 
 ```plaintext
+
 
 p1 
   → Person.prototype 
     → Object.prototype 
       → null
 ```
+
 
 
 这也是为什么所有对象都有 `toString()`、`hasOwnProperty()` 等方法——它们定义在 `Object.prototype` 上。
@@ -126,8 +140,10 @@ p1
 
 ```javascript
 
+
 Object.getPrototypeOf(p1) === Person.prototype; // true
 ```
+
 
 
 ## 五、修改原型（慎用）
@@ -136,15 +152,18 @@ Object.getPrototypeOf(p1) === Person.prototype; // true
 
 ```javascript
 
+
 Person.prototype.age = 25;
 
 console.log(p1.age); // 25
 ```
 
 
+
 ⚠️ **注意**：直接替换整个 `prototype` 会影响已有实例：
 
 ```javascript
+
 
 Person.prototype = {
   sayBye() {
@@ -157,11 +176,13 @@ Person.prototype = {
 ```
 
 
+
 ## 六、ES6 类语法（语法糖）
 
 ES6 的 `class` 只是原型继承的语法糖。
 
 ```javascript
+
 
 class Animal {
   constructor(name) {
@@ -183,9 +204,11 @@ d.speak(); // "Rex barks"
 ```
 
 
+
 底层依然是原型链：
 
 ```plaintext
+
 
 d 
   → Dog.prototype 
@@ -193,6 +216,7 @@ d
       → Object.prototype 
         → null
 ```
+
 
 
 ## 七、常见面试题
@@ -203,15 +227,18 @@ d
 
 ```javascript
 
+
 p1 instanceof Person; // true
 // 等价于：
 // Person.prototype 是否在 p1 的原型链上？
 ```
 
 
+
 ### 2. 如何实现继承？
 
 ```javascript
+
 
 function Animal(name) {
   this.name = name;
@@ -232,6 +259,7 @@ Dog.prototype.constructor = Dog;
 const d = new Dog("Rex");
 d.eat(); // "Rex eats"
 ```
+
 
 
 ## 八、总结

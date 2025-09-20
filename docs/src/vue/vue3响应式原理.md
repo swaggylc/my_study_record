@@ -12,6 +12,7 @@ Proxy 可以为一个对象创建一个"代理"，在这个代理上可以定义
 
 ```javascript
 
+
 const obj = {
   name: "张三",
   age: 18,
@@ -53,6 +54,7 @@ proxyObj.borther.age = 2;
 ```
 
 
+
 ## 2. 响应式核心流程
 
 Vue 3 的响应式系统主要由以下几个部分组成：
@@ -65,6 +67,7 @@ Vue 3 的响应式系统主要由以下几个部分组成：
 
 ```javascript
 
+
 import { reactive } from 'vue';
 
 const state = reactive({
@@ -76,16 +79,19 @@ const state = reactive({
 ```
 
 
+
 #### ✅ (2) effect（副作用函数）
 
 Vue 内部使用 effect 来创建一个响应式的副作用函数（如组件渲染、watchEffect 等）。
 
 ```javascript
 
+
 effect(() => {
   console.log(state.count); // 会触发 getter，收集依赖
 });
 ```
+
 
 
 当 state.count 变化时，这个函数会自动重新执行。
@@ -96,6 +102,7 @@ effect(() => {
 - **trigger**：在 set 拦截中调用，用于触发更新。
 
 ```javascript
+
 
 let activeEffect = null;
 
@@ -138,11 +145,13 @@ const trigger = (target, key) => {
 ```
 
 
+
 #### ✅ (4) ref
 
 虽然 reactive 很强大，但它只能用于对象。对于原始类型（如 number、string），Vue 3 提供了 ref。
 
 ```javascript
+
 
 import { ref, reactive } from 'vue';
 
@@ -154,6 +163,7 @@ count.value++; // 必须通过 .value 访问
 
 // 在模板中，ref 会被自动解包
 ```
+
 
 
 ref 内部其实也是一个 Proxy（或带 value 属性的对象），在模板或 reactive 中使用时会自动解包。
@@ -172,7 +182,8 @@ ref 内部其实也是一个 Proxy（或带 value 属性的对象），在模板
 
 ```
 
-          [effect] (渲染函数 / watchEffect)
+          
+[effect] (渲染函数 / watchEffect)
                 ↓
            读取数据 (get)
                 ↓
@@ -184,6 +195,7 @@ ref 内部其实也是一个 Proxy（或带 value 属性的对象），在模板
                 ↓
           [effect] 重新执行
 ```
+
 
 
 ## 5. Vue 3 响应式 API
@@ -199,6 +211,7 @@ ref 内部其实也是一个 Proxy（或带 value 属性的对象），在模板
 
 ```javascript
 
+
 const state = reactive({
   count: 0,
   name: 'Vue'
@@ -207,6 +220,7 @@ const state = reactive({
 const countRef = toRef(state, 'count');
 const { name } = toRefs(state); // 解构后仍保持响应式
 ```
+
 
 
 ## 6. 总结

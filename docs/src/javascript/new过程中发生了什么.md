@@ -8,6 +8,7 @@
 
 ```javascript
 
+
 function Person(name) {
   this.name = name;
 }
@@ -16,15 +17,18 @@ const p1 = new Person("Alice");
 ```
 
 
+
 JavaScript 引擎会自动执行以下四个步骤：
 
 ### 🔹 步骤 1：创建一个全新的空对象
 
 ```javascript
 
+
 // 1. 创建一个空对象
 const obj = {};
 ```
+
 
 
 这个对象最初是空的，没有任何属性。
@@ -33,11 +37,13 @@ const obj = {};
 
 ```javascript
 
+
 // 2. 设置原型链
 Object.setPrototypeOf(obj, Person.prototype);
 // 或等价于：
 // obj.__proto__ = Person.prototype;
 ```
+
 
 
 这一步建立了原型链，使得新对象可以访问构造函数原型上的方法和属性。
@@ -46,11 +52,13 @@ Object.setPrototypeOf(obj, Person.prototype);
 
 ```javascript
 
+
 // 3. 执行构造函数，this 指向 obj
 Person.call(obj, "Alice");
 // 相当于：
 // obj.name = "Alice";
 ```
+
 
 
 构造函数中的 `this` 不再指向全局对象（或 undefined），而是指向刚刚创建的新对象 `obj`。
@@ -61,9 +69,11 @@ Person.call(obj, "Alice");
 
 ```javascript
 
+
 // 4. 默认返回新对象
 return obj;
 ```
+
 
 
 - 如果构造函数没有返回值，或者返回的是原始类型（如 number、string、boolean），则 `new` 表达式返回新创建的对象。
@@ -72,6 +82,7 @@ return obj;
 ## 示例：返回对象的影响
 
 ```javascript
+
 
 function Test() {
   this.a = 1;
@@ -83,9 +94,11 @@ console.log(t.a); // 2，不是 1
 ```
 
 
+
 ## 示例：返回原始类型不影响
 
 ```javascript
+
 
 function Test() {
   this.a = 1;
@@ -97,11 +110,13 @@ console.log(t.a); // 1
 ```
 
 
+
 ## 🧩 总结：new 的模拟实现
 
 我们可以手动模拟 `new` 的行为，写一个 `myNew` 函数：
 
 ```javascript
+
 
 function myNew(Constructor, ...args) {
   // 1. 创建空对象
@@ -127,11 +142,13 @@ console.log(p1.name); // "Alice"
 ```
 
 
+
 💡 这个 `myNew` 函数就是对 `new` 操作符的底层原理的还原。
 
 ## 📌 补充：箭头函数不能用 new
 
 ```javascript
+
 
 const Person = (name) => {
   this.name = name;
@@ -141,11 +158,13 @@ const Person = (name) => {
 ```
 
 
+
 因为箭头函数没有自己的 `this`，也没有 `prototype` 属性，所以不能作为构造函数使用。
 
 ## 🧠 原型链图解
 
 ```plaintext
+
 
 p1 (实例)
   ↓ __proto__
@@ -155,6 +174,7 @@ Object.prototype
   ↓ __proto__
 null
 ```
+
 
 
 通过 `new`，`p1` 获得了 `Person.prototype` 上的所有方法，实现了继承。

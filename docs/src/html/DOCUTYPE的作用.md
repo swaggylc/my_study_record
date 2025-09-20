@@ -12,8 +12,10 @@ HTML5 使用了简化的 DOCTYPE 声明形式：
 
 ```html
 
+
 <!DOCTYPE html>
 ```
+
 
 
 这种简洁的声明方式适用于所有 HTML5 文档，不需要指定 DTD（文档类型定义）的具体路径。
