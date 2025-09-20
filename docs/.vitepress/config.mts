@@ -40,6 +40,7 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Study", link: "/start/study" },
+      { text: "Archives", link: "/archives" },
     ],
 
     socialLinks: [{ icon: "github", link: "https://github.com/swaggylc" }],
