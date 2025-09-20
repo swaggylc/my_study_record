@@ -26,7 +26,10 @@ import "vitepress-theme-teek/theme-chalk/tk-banner-desc-gradient.css"; // 博客
 import "vitepress-theme-teek/theme-chalk/tk-home-card-hover.css"; // 首页卡片悬停效果
 import "vitepress-theme-teek/theme-chalk/tk-fade-up-animation.css"; // 首次加载的动画效果
 
+import "virtual:group-icons.css";
+
 import "./styles/index.scss";
+import "./styles/code.scss";
 
 export default {
   extends: Teek,

@@ -1,6 +1,10 @@
 import { defineConfig } from "vitepress";
 import llmstxt from "vitepress-plugin-llms";
 import { teekConfig } from "./teekConfig";
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin,
+} from "vitepress-plugin-group-icons";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,6 +16,9 @@ export default defineConfig({
   head: [["link", { rel: "icon", href: "/my_study_record/img/圆角-avt.jpg" }]],
   // markdown 配置
   markdown: {
+    config(md) {
+      md.use(groupIconMdPlugin);
+    },
     // 开启行号
     lineNumbers: true,
     image: {
@@ -46,6 +53,6 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [llmstxt() as any],
+    plugins: [llmstxt() as any, groupIconVitePlugin()],
   },
 });
