@@ -7,8 +7,6 @@ Vue 2 的响应式原理是其核心特性之一，它使得数据的变化能�
 Vue 2 在初始化数据时，会遍历 `data` 对象中的每一个属性，使用 `Object.defineProperty` 将它们转换为 getter 和 setter。
 
 ```javascript
-
-
 const person = {
   name: "张三",
   age: 18,
@@ -55,9 +53,6 @@ function defineProperty(obj) {
   }
 }
 ```
-
-
-
 - **getter**：在读取属性时触发，用于 **收集依赖**。
 - **setter**：在修改属性时触发，用于 **通知更新**。
 
@@ -92,26 +87,17 @@ Vue 会为 data 对象创建一个 Observer 实例，负责将对象的所有属
 ### 无法检测对象属性的添加或删除：
 
 ```javascript
-
-
 vm.obj.newProp = 'hi' // 不会触发更新
 delete vm.obj.prop   // 不会触发更新
 ```
-
-
-
 **解决方案**：使用 `Vue.set(vm.obj, 'newProp', 'hi')` 或 `this.$set`。
 
 ### 无法检测数组索引的变化或长度的直接修改：
 
 ```javascript
-
-
 vm.items[0] = 'new'     // 不会触发更新
 vm.items.length = 0     // 不会触发更新
 ```
-
-
 **PS：为什么数组直接修改索引不会触发更新？**
 
 **原因**：数组的索引是对象的属性，但VUE没有为数组的每一个索引属性定义 getter/setter，因为数组的长度通常较大且变化频繁，为每个索引都定义 getter/setter 会导致性能问题。

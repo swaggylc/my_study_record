@@ -25,6 +25,7 @@ export const teekConfig = defineTeekConfig({
   },
   //   代码块
   codeBlock: {
+    enabled: false, // 是否启用新版代码块
     copiedDone: (TkMessage) => TkMessage.success("复制成功！"),
   },
   //   文章分享

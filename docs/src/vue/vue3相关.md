@@ -7,8 +7,6 @@
 setup 函数是 Vue 3 Composition API 的入口函数，组件中所用到的：数据、方法、计算属性、监听器等，都需要在 setup 中定义。
 
 ```vue
-
-
 <template>
   <div>{{msg}}</div>
 </template>
@@ -24,9 +22,6 @@ setup 函数是 Vue 3 Composition API 的入口函数，组件中所用到的：
   }
 </script>
 ```
-
-
-
 ### 1.2 注意事项
 
 1. `setup` 函数的执行时机在 `beforeCreate` 之前
@@ -36,8 +31,6 @@ setup 函数是 Vue 3 Composition API 的入口函数，组件中所用到的：
 ### 1.3 setup 的参数
 
 ```javascript
-
-
 // props: 接收组件传递的属性
 // context: 上下文对象，包含 attrs、slots、emit
 setup(props, context) {
@@ -47,9 +40,6 @@ setup(props, context) {
   console.log(context.emit)
 }
 ```
-
-
-
 ## 2. ref 函数
 
 ### 2.1 基本介绍
@@ -57,8 +47,6 @@ setup(props, context) {
 ref 函数用来定义响应式数据，一般用于定义基本类型的数据（String、Number、Boolean 等）。
 
 ```javascript
-
-
 import { ref } from 'vue'
 setup() {
   const count = ref(0)
@@ -78,9 +66,6 @@ setup() {
   }
 }
 ```
-
-
-
 ### 2.2 ref 函数的注意事项
 
 1. ref 函数可以定义任何类型的响应式数据，不仅仅是基本类型
@@ -94,8 +79,6 @@ setup() {
 reactive 函数用来定义响应式对象，一般用于定义复杂的数据类型（对象、数组等）。
 
 ```javascript
-
-
 import { reactive } from 'vue'
 setup() {
   const user = reactive({
@@ -118,9 +101,6 @@ setup() {
   }
 }
 ```
-
-
-
 ### 3.2 reactive 函数的注意事项
 
 1. reactive 函数只能定义对象类型的响应式数据
@@ -141,8 +121,6 @@ Vue3 使用 Proxy 对象实现响应式数据，相比于 Vue2 的 Object.define
 ### 4.2 响应式原理实现
 
 ```javascript
-
-
 function reactive(target) {
   return new Proxy(target, {
     get(target, key, receiver) {
@@ -177,9 +155,6 @@ function reactive(target) {
   })
 }
 ```
-
-
-
 ## 5. watch 函数
 
 ### 5.1 基本介绍
@@ -187,8 +162,6 @@ function reactive(target) {
 watch 函数用来监听数据的变化，当数据发生变化时，执行回调函数。
 
 ```javascript
-
-
 import { ref, reactive, watch } from 'vue'
 setup() {
   const count = ref(0)
@@ -225,14 +198,9 @@ setup() {
   }
 }
 ```
-
-
-
 ### 5.2 watch 函数的配置项
 
 ```javascript
-
-
 watch(count, (newValue, oldValue) => {
   console.log('count发生了变化', newValue, oldValue)
 }, {
@@ -240,9 +208,6 @@ watch(count, (newValue, oldValue) => {
   deep: true // 是否深度监听
 })
 ```
-
-
-
 ## 6. watchEffect 函数
 
 ### 6.1 基本介绍
@@ -250,8 +215,6 @@ watch(count, (newValue, oldValue) => {
 watchEffect 函数用来监听数据的变化，当数据发生变化时，执行回调函数。与 watch 函数不同的是，watchEffect 函数会自动收集依赖，不需要手动指定要监听的数据。
 
 ```javascript
-
-
 import { ref, reactive, watchEffect } from 'vue'
 setup() {
   const count = ref(0)
@@ -278,9 +241,6 @@ setup() {
   }
 }
 ```
-
-
-
 ### 6.2 watchEffect 与 watch 的区别
 
 1. watchEffect 会自动收集依赖，不需要手动指定要监听的数据
@@ -295,8 +255,6 @@ setup() {
 自定义 hook 是一个函数，用来封装和复用 Composition API 的逻辑。
 
 ```javascript
-
-
 // useCounter.js
 import { ref, computed } from 'vue'
 
@@ -320,12 +278,7 @@ export function useCounter() {
   }
 }
 ```
-
-
-
 ```vue
-
-
 <template>
   <div>
     <p>count: {{count}}</p>
@@ -350,9 +303,6 @@ export function useCounter() {
   }
 </script>
 ```
-
-
-
 ### 7.2 自定义 hook 的注意事项
 
 1. 自定义 hook 的命名一般以 use 开头
@@ -366,8 +316,6 @@ export function useCounter() {
 toRef 函数用来将响应式对象的某个属性转换为响应式数据。
 
 ```javascript
-
-
 import { reactive, toRef } from 'vue'
 setup() {
   const user = reactive({
@@ -389,9 +337,6 @@ setup() {
   }
 }
 ```
-
-
-
 ### 8.2 toRef 与 ref 的区别
 
 1. ref 函数会创建一个新的响应式数据，而 toRef 函数不会创建新的响应式数据，只是引用响应式对象的某个属性
@@ -405,8 +350,6 @@ setup() {
 shallowReactive 函数用来创建浅响应式对象，只监听对象的第一层属性的变化。
 
 ```javascript
-
-
 import { shallowReactive } from 'vue'
 setup() {
   const user = shallowReactive({
@@ -433,16 +376,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.2 shallowRef
 
 shallowRef 函数用来创建浅响应式数据，只监听 .value 的变化。
 
 ```javascript
-
-
 import { shallowRef } from 'vue'
 setup() {
   const user = shallowRef({
@@ -470,16 +408,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.3 readonly
 
 readonly 函数用来创建只读的响应式对象，不能修改对象的属性。
 
 ```javascript
-
-
 import { reactive, readonly } from 'vue'
 setup() {
   const user = reactive({
@@ -502,16 +435,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.4 shallowReadonly
 
 shallowReadonly 函数用来创建浅只读的响应式对象，只限制对象的第一层属性不能修改。
 
 ```javascript
-
-
 import { reactive, shallowReadonly } from 'vue'
 setup() {
   const user = reactive({
@@ -542,16 +470,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.5 toRefs
 
 toRefs 函数用来将响应式对象的所有属性转换为响应式数据。
 
 ```javascript
-
-
 import { reactive, toRefs } from 'vue'
 setup() {
   const user = reactive({
@@ -575,16 +498,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.6 isRef
 
 isRef 函数用来判断一个数据是否是 ref 创建的响应式数据。
 
 ```javascript
-
-
 import { ref, isRef } from 'vue'
 setup() {
   const count = ref(0)
@@ -599,16 +517,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.7 isReactive
 
 isReactive 函数用来判断一个数据是否是 reactive 创建的响应式数据。
 
 ```javascript
-
-
 import { reactive, isReactive } from 'vue'
 setup() {
   const user = reactive({
@@ -626,16 +539,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.8 isReadonly
 
 isReadonly 函数用来判断一个数据是否是只读的响应式数据。
 
 ```javascript
-
-
 import { reactive, readonly, isReadonly } from 'vue'
 setup() {
   const user = reactive({
@@ -653,16 +561,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.9 unref
 
 unref 函数用来获取 ref 创建的响应式数据的值，如果数据不是 ref 创建的响应式数据，则直接返回数据本身。
 
 ```javascript
-
-
 import { ref, unref } from 'vue'
 setup() {
   const count = ref(0)
@@ -677,16 +580,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.10 toRaw
 
 toRaw 函数用来获取 reactive 或 readonly 创建的响应式对象的原始对象。
 
 ```javascript
-
-
 import { reactive, toRaw } from 'vue'
 setup() {
   const user = {
@@ -705,16 +603,11 @@ setup() {
   }
 }
 ```
-
-
-
 ### 9.11 markRaw
 
 markRaw 函数用来标记一个对象，使其永远不会变成响应式对象。
 
 ```javascript
-
-
 import { reactive, markRaw } from 'vue'
 setup() {
   const user = markRaw({
@@ -731,9 +624,6 @@ setup() {
   }
 }
 ```
-
-
-
 ## 10. Composition API 的优势
 
 ### 10.1 更好的逻辑复用
@@ -759,23 +649,16 @@ Composition API 是按需引入的，只引入使用的 API，可以减小打包
 Fragment 组件可以让组件有多个根元素，不需要再使用一个额外的 div 来包裹所有的元素。
 
 ```vue
-
-
 <template>
   <div>第一个根元素</div>
   <div>第二个根元素</div>
 </template>
 ```
-
-
-
 ### 11.2 Teleport
 
 Teleport 组件可以将组件的内容渲染到指定的 DOM 元素中，而不是当前组件的 DOM 结构中。
 
 ```vue
-
-
 <template>
   <div>
     <teleport to="#modal-container">
@@ -786,16 +669,11 @@ Teleport 组件可以将组件的内容渲染到指定的 DOM 元素中，而不
   </div>
 </template>
 ```
-
-
-
 ### 11.3 Suspense
 
 Suspense 组件可以让组件在等待异步数据时显示一个加载状态，当异步数据加载完成后再显示组件的内容。
 
 ```vue
-
-
 <template>
   <div>
     <Suspense>
@@ -819,9 +697,6 @@ Suspense 组件可以让组件在等待异步数据时显示一个加载状态�
   }
 </script>
 ```
-
-
-
 ## 12. 总结
 
 Vue 3 相比 Vue 2 有很多新的特性和改进，包括 Composition API、响应式原理的改进、新的组件等。Composition API 是 Vue 3 的核心特性之一，它可以更好地组织和复用组件的逻辑，提高代码的可读性和可维护性。通过学习和掌握 Vue 3 的新特性，可以更好地开发 Vue 应用。
