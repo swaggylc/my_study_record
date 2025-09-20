@@ -38,7 +38,7 @@ export const teekConfig = defineTeekConfig({
       icon: "weChatPay", // 赞赏图标，内置 weChatPay 和 alipay
       expandTitle: "打赏支持", // 展开标题，支持 HTML
       collapseTitle: "下次一定", // 折叠标题，支持 HTML
-      content: `<img src='/my_study_record/img/wechatPay.png'>`, // 赞赏内容，支持 HTML（添加基础路径以匹配 config.mts 中的 base 配置）
+      content: `<img src='/img/wechatPay.png'>`, // 赞赏内容，支持 HTML（路径已更新以匹配 config.mts 中的 base 配置）
       expand: false, // 是否默认展开，默认 false
     },
   },
