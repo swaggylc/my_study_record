@@ -30,6 +30,7 @@ import "virtual:group-icons.css";
 
 import "./styles/index.scss";
 import "./styles/code.scss";
+import "./styles/blur.scss";
 
 export default {
   extends: Teek,

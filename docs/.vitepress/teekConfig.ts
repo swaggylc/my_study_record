@@ -30,7 +30,7 @@ export const teekConfig = defineTeekConfig({
   },
   //   文章分享
   articleShare: { enabled: true },
-  pageStyle: "segment-nav",
+  pageStyle: "default",
   appreciation: {
     position: "doc-after", // 赞赏位置
     // 赞赏配置
