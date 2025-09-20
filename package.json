@@ -9,7 +9,7 @@
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
-    "docs:build": "git fetch --unshallow && git switch main && git pull origin main && vitepress build docs",
+    "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
