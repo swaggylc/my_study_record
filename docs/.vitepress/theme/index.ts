@@ -31,6 +31,7 @@ import "virtual:group-icons.css";
 import "./styles/index.scss";
 import "./styles/code.scss";
 import "./styles/blur.scss";
+import "./styles/sidebarIcon.scss";
 
 export default {
   extends: Teek,
