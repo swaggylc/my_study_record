@@ -1,3 +1,6 @@
+---
+date: "2025-09-20T12:41:23+08:00"
+---
 # JavaScript 手写 call 方法详解
 
 在 JavaScript 中，`call` 方法是函数对象（Function）原型（Function.prototype）上的一个方法，用于调用一个函数，并指定该函数内部 `this` 的指向，同时可以传入参数。本文将详细介绍 `call` 方法的原理、实现及应用场景。

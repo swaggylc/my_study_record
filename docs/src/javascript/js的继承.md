@@ -1,3 +1,6 @@
+---
+date: "2025-09-20T12:41:23+08:00"
+---
 # JavaScript 的继承机制
 
 JavaScript 是一种基于原型（Prototype）的语言，而不是传统的基于类（Class）的语言。虽然 ES6 引入了 `class` 关键字，但这只是一种语法糖，JavaScript 的继承机制仍然基于原型链。本文将详细介绍 JavaScript 中常见的几种继承方式及其实现原理。
