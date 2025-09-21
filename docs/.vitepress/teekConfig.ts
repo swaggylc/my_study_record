@@ -16,7 +16,7 @@ export const teekConfig = defineTeekConfig({
   //   页脚信息
   footerInfo: {
     theme: {
-      name: `Theme By swaggylc_0417@${version}`,
+      name: `Design By swaggylc_0417@${version}`,
     },
     copyright: {
       createYear: 2025,
