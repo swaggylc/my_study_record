@@ -13,7 +13,7 @@ export default defineConfig({
   title: "WEB_RECORD",
   description: "这是一个vitepress的demo工程",
   // 引入icon图标
-  head: [["link", { rel: "icon", href: "/img/圆角-avt.jpg" }]],
+  head: [["link", { rel: "icon", href: "/img/bookmeter.png" }]],
   // markdown 配置
   markdown: {
     config(md) {
@@ -36,7 +36,7 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "/img/圆角-avt.jpg",
+    logo: "/img/bookmeter.png",
     nav: [
       { text: "Home", link: "/" },
       { text: "Study", link: "/start/study" },
