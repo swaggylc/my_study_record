@@ -27,6 +27,8 @@ import busuanzi from "busuanzi.pure.js";
 
 import DataPanel from "./components/DataPanel.vue";
 import ContributeChart from "./components/ContributeChart.vue";
+import MouseClick from "./components/MouseClick.vue";
+import MouseFollower from "./components/MouseFollower.vue";
 
 export default {
   extends: Teek,
@@ -38,9 +40,12 @@ export default {
     }
     // 注册全局组件
     app.component("DataPanel", DataPanel);
+    app.component("MouseClick", MouseClick);
+    app.component("MouseFollower", MouseFollower);
   },
   Layout: () =>
     h(Teek.Layout, null, {
       "teek-archives-top-before": () => h(ContributeChart),
+      "layout-top": () => [h(MouseClick), h(MouseFollower)],
     }),
 };
