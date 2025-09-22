@@ -46,6 +46,7 @@ export const teekConfig = defineTeekConfig({
     sidebarOption: {
       initItems: false,
       collapsed: false,
+      restart: true,
     },
     permalink: true, // 使用默认的 permalink(永久链接) 插件
     autoFrontmatter: true, // 自动添加 frontmatter 元数据
