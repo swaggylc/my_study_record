@@ -18,6 +18,7 @@ import "./styles/index.scss";
 import "./styles/code.scss";
 import "./styles/blur.scss";
 import "./styles/sidebarIcon.scss";
+import "./styles/marker.scss";
 
 import { h } from "vue";
 
