@@ -1,91 +1,91 @@
-# VitePress 站点部署到 GitHub Pages 的工作流配置
-# 本工作流用于自动构建和部署 VitePress 站点到 GitHub Pages
+# # VitePress 站点部署到 GitHub Pages 的工作流配置
+# # 本工作流用于自动构建和部署 VitePress 站点到 GitHub Pages
 
-# 工作流名称
-name: Deploy VitePress site to Pages
+# # 工作流名称
+# name: Deploy VitePress site to Pages
 
-# 触发条件：定义工作流在什么情况下会运行
-on:
-  # 当代码推送到 main 分支时触发
-  # 如果您使用的是 master 分支作为默认分支，请将这里改为 master
-  push:
-    branches: [main]
+# # 触发条件：定义工作流在什么情况下会运行
+# on:
+#   # 当代码推送到 main 分支时触发
+#   # 如果您使用的是 master 分支作为默认分支，请将这里改为 master
+#   push:
+#     branches: [main]
 
-  # 允许从 GitHub Actions 选项卡手动触发此工作流
-  workflow_dispatch:
+#   # 允许从 GitHub Actions 选项卡手动触发此工作流
+#   workflow_dispatch:
 
-# 权限配置：设置 GITHUB_TOKEN 的权限，允许部署到 GitHub Pages
-permissions:
-  contents: read # 读取代码仓库内容的权限
-  pages: write # 写入 GitHub Pages 的权限
-  id-token: write # 写入 ID 令牌的权限
+# # 权限配置：设置 GITHUB_TOKEN 的权限，允许部署到 GitHub Pages
+# permissions:
+#   contents: read # 读取代码仓库内容的权限
+#   pages: write # 写入 GitHub Pages 的权限
+#   id-token: write # 写入 ID 令牌的权限
 
-# 并发配置：控制同时运行的部署作业数量
-# 允许只有一个并发部署，跳过在进行中的运行和最新排队的运行之间的排队运行
-# 但是，不要取消进行中的运行，因为我们希望允许这些生产部署完成
-concurrency:
-  group: pages
-  cancel-in-progress: false
+# # 并发配置：控制同时运行的部署作业数量
+# # 允许只有一个并发部署，跳过在进行中的运行和最新排队的运行之间的排队运行
+# # 但是，不要取消进行中的运行，因为我们希望允许这些生产部署完成
+# concurrency:
+#   group: pages
+#   cancel-in-progress: false
 
-# 作业定义：工作流包含的一系列任务
-jobs:
-  # 构建作业：负责构建 VitePress 站点
-  build:
-    # 指定运行环境为最新的 Ubuntu 系统
-    runs-on: ubuntu-latest
-    # 构建步骤
-    steps:
-      # 步骤1：检出代码仓库
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # 如果未启用 lastUpdated 功能，则不需要此设置
+# # 作业定义：工作流包含的一系列任务
+# jobs:
+#   # 构建作业：负责构建 VitePress 站点
+#   build:
+#     # 指定运行环境为最新的 Ubuntu 系统
+#     runs-on: ubuntu-latest
+#     # 构建步骤
+#     steps:
+#       # 步骤1：检出代码仓库
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0 # 如果未启用 lastUpdated 功能，则不需要此设置
 
-      # 如果您使用的是 pnpm 包管理器，请取消下面几行的注释
-      - uses: pnpm/action-setup@v3
-        # 👇 指定 pnpm 版本
-        with:
-          version: 10.17.0 # 如果您在 package.json 中设置了 "packageManager"，则不需要此设置
+#       # 如果您使用的是 pnpm 包管理器，请取消下面几行的注释
+#       - uses: pnpm/action-setup@v3
+#         # 👇 指定 pnpm 版本
+#         with:
+#           version: 10.17.0 # 如果您在 package.json 中设置了 "packageManager"，则不需要此设置
 
-      # 如果您使用的是 Bun 运行时，请取消下面一行的注释
-      # - uses: oven-sh/setup-bun@v1
+#       # 如果您使用的是 Bun 运行时，请取消下面一行的注释
+#       # - uses: oven-sh/setup-bun@v1
 
-      # 步骤2：设置 Node.js 环境
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22 # 使用 Node.js 22 版本
-          cache: pnpm # 使用 npm 缓存依赖（也可以选择 pnpm 或 yarn）
+#       # 步骤2：设置 Node.js 环境
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22 # 使用 Node.js 22 版本
+#           cache: pnpm # 使用 npm 缓存依赖（也可以选择 pnpm 或 yarn）
 
-      # 步骤3：配置 GitHub Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+#       # 步骤3：配置 GitHub Pages
+#       - name: Setup Pages
+#         uses: actions/configure-pages@v4
 
-      # 步骤4：安装项目依赖
-      - name: Install dependencies
-        run: pnpm install # 根据您使用的包管理器，可以替换为 pnpm install / yarn install / bun install
+#       # 步骤4：安装项目依赖
+#       - name: Install dependencies
+#         run: pnpm install # 根据您使用的包管理器，可以替换为 pnpm install / yarn install / bun install
 
-      # 步骤5：使用 VitePress 构建站点
-      - name: Build with VitePress
-        run: pnpm run docs:build # 根据您使用的包管理器，可以替换为 pnpm docs:build / yarn docs:build / bun run docs:build
+#       # 步骤5：使用 VitePress 构建站点
+#       - name: Build with VitePress
+#         run: pnpm run docs:build # 根据您使用的包管理器，可以替换为 pnpm docs:build / yarn docs:build / bun run docs:build
 
-      # 步骤6：上传构建产物作为 GitHub Pages 部署的制品
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/.vitepress/dist # VitePress 构建输出目录
+#       # 步骤6：上传构建产物作为 GitHub Pages 部署的制品
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: docs/.vitepress/dist # VitePress 构建输出目录
 
-  # 部署作业：负责将构建好的站点部署到 GitHub Pages
-  deploy:
-    # 部署环境配置
-    environment:
-      name: github-pages # 环境名称
-      url: ${{ steps.deployment.outputs.page_url }} # 部署后的页面 URL
-    needs: build # 依赖关系：部署作业依赖于构建作业完成
-    runs-on: ubuntu-latest # 运行环境
-    name: Deploy # 作业名称
-    steps:
-      # 步骤：将构建好的站点部署到 GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+#   # 部署作业：负责将构建好的站点部署到 GitHub Pages
+#   deploy:
+#     # 部署环境配置
+#     environment:
+#       name: github-pages # 环境名称
+#       url: ${{ steps.deployment.outputs.page_url }} # 部署后的页面 URL
+#     needs: build # 依赖关系：部署作业依赖于构建作业完成
+#     runs-on: ubuntu-latest # 运行环境
+#     name: Deploy # 作业名称
+#     steps:
+#       # 步骤：将构建好的站点部署到 GitHub Pages
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4
