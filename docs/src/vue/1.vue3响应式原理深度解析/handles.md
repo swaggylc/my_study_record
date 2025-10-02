@@ -336,7 +336,7 @@ get(target, key, receiver) {
 ```
 
 **get方法的内部操作：**
-![LOGO](/img/get内部操作.jpg)
+![LOGO](/img/vue/1.vue3响应式原理深度解析/get内部操作.jpg)
 
 **功能**：拦截属性的读取操作。
 
@@ -377,12 +377,12 @@ has(target, key) {
 }
 ```
 **in关键字内部操作：**
-![LOGO](/img/in关键字内部实现.jpg)
+![LOGO](/img/vue/1.vue3响应式原理深度解析/in关键字内部实现.jpg)
 
 **功能**：拦截`in`操作符的使用。
 
 **触发依赖收集**：触发`HAS`操作的依赖收集。
-![LOGO](/img/in操作符捕捉器.jpg)
+![LOGO](/img/vue/1.vue3响应式原理深度解析/in操作符捕捉器.jpg)
 
 #### 2.4 deleteProperty方法
 
