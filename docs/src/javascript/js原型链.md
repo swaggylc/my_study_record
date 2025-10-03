@@ -10,6 +10,7 @@ categories:
 
 
 JavaScript 的原型链（Prototype Chain）是其实现继承和属性查找机制的核心机制。由于 JavaScript 没有传统的“类”继承（如 Java 或 C++），而是采用基于原型的面向对象系统，理解原型链对于掌握 JS 至关重要。
+![原型链](/img/javascript/js原型链/原型链全貌.jpg)
 
 ## 一、核心概念
 
@@ -105,11 +106,11 @@ p1
 
 ## 四、如何查看原型？
 
-| 方法 | 说明 |
-|------|------|
-| Object.getPrototypeOf(obj) | 推荐方式，获取对象的原型 |
-| obj.__proto__ | 非标准但广泛支持，不推荐用于生产 |
-| constructor.prototype | 通过构造函数获取 |
+| 方法                       | 说明                             |
+| -------------------------- | -------------------------------- |
+| Object.getPrototypeOf(obj) | 推荐方式，获取对象的原型         |
+| obj.__proto__              | 非标准但广泛支持，不推荐用于生产 |
+| constructor.prototype      | 通过构造函数获取                 |
 
 ```javascript
 Object.getPrototypeOf(p1) === Person.prototype; // true
@@ -202,13 +203,13 @@ d.eat(); // "Rex eats"
 ```
 ## 八、总结
 
-| 概念 | 说明 |
-|------|------|
-| prototype | 函数特有的属性，指向原型对象 |
-| __proto__ / [[Prototype]] | 对象的内部属性，指向其构造函数的 prototype |
-| 原型链 | 对象属性查找的路径：自身 → 原型 → 原型的原型 → ... → null |
-| Object.prototype | 所有对象的最终原型 |
-| Object.getPrototypeOf() | 获取对象原型的标准方法 |
+| 概念                      | 说明                                                      |
+| ------------------------- | --------------------------------------------------------- |
+| prototype                 | 函数特有的属性，指向原型对象                              |
+| __proto__ / [[Prototype]] | 对象的内部属性，指向其构造函数的 prototype                |
+| 原型链                    | 对象属性查找的路径：自身 → 原型 → 原型的原型 → ... → null |
+| Object.prototype          | 所有对象的最终原型                                        |
+| Object.getPrototypeOf()   | 获取对象原型的标准方法                                    |
 
 ✅ **记住一句话**：JavaScript 中，一切对象的属性查找，都是沿着原型链向上查找的。
 
