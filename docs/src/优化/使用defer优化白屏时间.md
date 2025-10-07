@@ -36,8 +36,23 @@ defer优化的核心是利用浏览器的`requestAnimationFrame`API，它可以�
 
 ## 三、核心代码实现
 
-### defer函数的基本实现
+::: code-group
+```vue [App.vue]
+<template>
+  <div v-for="i in 100">
+    <!-- 根据defer函数判断是否渲染组件 -->
+    <heavy-component v-if="defer(i)"></heavy-component>
+  </div>
+</template>
 
+<script setup>
+import HeavyComponent from './HeavyComponent.vue'
+import useDefer from './useDefer.js'
+
+// 创建defer实例，用于控制组件渲染时机
+const defer = useDefer()
+</script>
+```
 ```javascript [useDefer.js]
 import { ref } from 'vue'
 
@@ -68,26 +83,7 @@ export default function useDefer(maxFrameCount = 1000) {
     }
 }
 ```
-
-### 在Vue组件中的应用
-
-```vue [App.vue]
-<template>
-  <div v-for="i in 100">
-    <!-- 根据defer函数判断是否渲染组件 -->
-    <heavy-component v-if="defer(i)"></heavy-component>
-  </div>
-</template>
-
-<script setup>
-import HeavyComponent from './HeavyComponent.vue'
-import useDefer from './useDefer.js'
-
-// 创建defer实例，用于控制组件渲染时机
-const defer = useDefer()
-</script>
-```
-
+:::
 ## 四、代码原理解析
 
 ### requestAnimationFrame的工作机制
@@ -267,13 +263,13 @@ const defer = useDefer(100)
 
 使用defer优化前后的性能对比（以渲染100个重型组件为例）：
 
-| 指标 | 未使用defer | 使用defer | 提升比例 |
-|------|------------|----------|---------|
-| 首屏渲染时间 | 2500ms | 800ms | 68% |
-| 首次可交互时间 | 2800ms | 900ms | 67.9% |
-| 完全渲染时间 | 3000ms | 3500ms | -16.7% |
-| 主线程阻塞时间 | 2200ms | 400ms | 81.8% |
-| FPS平均值 | 15fps | 55fps | 266.7% |
+| 指标           | 未使用defer | 使用defer | 提升比例 |
+| -------------- | ----------- | --------- | -------- |
+| 首屏渲染时间   | 2500ms      | 800ms     | 68%      |
+| 首次可交互时间 | 2800ms      | 900ms     | 67.9%    |
+| 完全渲染时间   | 3000ms      | 3500ms    | -16.7%   |
+| 主线程阻塞时间 | 2200ms      | 400ms     | 81.8%    |
+| FPS平均值      | 15fps       | 55fps     | 266.7%   |
 
 > 注：完全渲染时间略有增加是因为渲染任务被分散到了多个帧，但用户感知的性能和体验有显著提升。
 
