@@ -73,5 +73,8 @@ export const teekConfig = defineTeekConfig({
     },
     permalink: true, // 使用默认的 permalink(永久链接) 插件
     autoFrontmatter: true, // 自动添加 frontmatter 元数据
+    autoFrontmatterOption: {
+      permalinkType: "simple", // 可选：simple | rules
+    },
   },
 });
